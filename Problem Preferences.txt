@@ -1,6 +1,7 @@
 Honestly I know so little about most of these problems that any of them could be very bad or very easy.
 1-4 are all pretty much interchangable for my preferences.
 
+SB Preferences:
 Preference 1: Weiss 10.55 p 524 - Longest common subsequence
 	Similar to a problem he did in class. Looks solveable.
 
