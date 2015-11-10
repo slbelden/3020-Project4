@@ -1,3 +1,8 @@
+Team Members:
+Stephen Belden
+Meghan Haukaas
+Chris Ruiz
+
 Preference 1: Weiss 10.55 p 524 - Longest common subsequence
 Preference 2: Weiss 10.62 p 525 - Largest submatrix of ones	
 Preference 3: Weiss 10.56 p 524 - Approximate pattern matching
