@@ -14,7 +14,19 @@ using std::endl;
 #include <vector>
 using std::vector;
 
-void runAllTests() {  
+int n = 1;
+
+void test(string filename, int expected) {
+	cout << "Case " << n << ": ";
+	Matrix matrix = Matrix(filename);
+	cout << endl << "Expected result: " << expected << endl;
+	matrix.findLargestSubmatrix();
+	cout << endl << endl;
+	n++;
+}
+
+void runAllTests() {
+	/*
 	// Case 1
 	// A matrix of all 0's
 	Matrix matrix1 = Matrix("test1.txt");
@@ -104,5 +116,16 @@ void runAllTests() {
 	cout << endl << "Expected result: 6" << endl;
 	matrix10.findLargestSubmatrix();
 	cout << endl << endl;
+	*/
 
+	test("test1.txt", 0);
+	test("test2.txt", 9);
+	test("test3.txt", 1);
+	test("test4.txt", 4);
+	test("test5.txt", 6);
+	test("test6.txt", 3);
+	test("test7.txt", 3);
+	test("test8.txt", 4);
+	test("test9.txt", 4);
+	test("test10.txt", 6);
 }

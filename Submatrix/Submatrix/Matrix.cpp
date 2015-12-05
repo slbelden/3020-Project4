@@ -92,26 +92,33 @@ int Matrix::findLargestSubmatrix() const {
 			}
 			C.push_back(row);
 		}
-
-		// Test Print
-		cout << endl << "Histogram Matrix:" << endl;
-		for each(vector<int> v in C) {
-			for each(int i in v) cout << i;
-			cout << endl;
-		}
 		
 		stack<vector<int>> pairs; // Initialize stack of pairs for tests
 		pairs.push(vector<int>{0, -1}); // Add buffer entry
-		size_t best = 1; // Initialize largest submatrix size
+		size_t best = 0; // Initialize largest submatrix size
 
 		// Test for largest submartix row-by-row, element-by-element
 		for(size_t row = 0; row < C.size(); row++) {
 			for(size_t i = 0; i < C[row].size(); i++) {
-
+				if(C[row][i] > pairs.top()[0])
+					pairs.push(vector<int>{C[row][i], (int)i});
+				else if(C[row][i] == pairs.top()[0]) {}
+				else {
+					while(C[row][i] < pairs.top()[0]) {
+						int prevI = pairs.top()[1];
+						vector<int> temp{pairs.top()[0],pairs.top()[1]};
+						pairs.pop();
+						if((i - prevI)*temp[0] > best)
+							best = (i - prevI)*temp[0];
+						if(C[row][i] > pairs.top()[0])
+							pairs.push(vector<int>{C[row][i], prevI});
+					}
+				}
 			}
+			while(!pairs.empty()) pairs.pop();
+			pairs.push(vector<int>{0, -1}); // Add buffer entry
 		}
-
-
-		return 1;
+		cout << "Largest submatrix has size " << best << endl;
+		return best;
 	}
 }
