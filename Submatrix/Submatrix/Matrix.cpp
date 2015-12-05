@@ -92,6 +92,12 @@ int Matrix::findLargestSubmatrix() const {
 			}
 			C.push_back(row);
 		}
+
+		// Test print
+		for each (vector<int> row in C) {
+			for each (int n in row) cout << n;
+			cout << endl;
+		}
 		
 		stack<vector<int>> pairs; // Initialize stack of pairs for tests
 		pairs.push(vector<int>{0, -1}); // Add buffer entry
@@ -104,15 +110,16 @@ int Matrix::findLargestSubmatrix() const {
 					pairs.push(vector<int>{C[row][i], (int)i});
 				else if(C[row][i] == pairs.top()[0]) {}
 				else {
+					int prevI;
 					while(C[row][i] < pairs.top()[0]) {
-						int prevI = pairs.top()[1];
-						vector<int> temp{pairs.top()[0],pairs.top()[1]};
+						prevI = pairs.top()[1];
+						int prevH = pairs.top()[0];
 						pairs.pop();
-						if((i - prevI)*temp[0] > best)
-							best = (i - prevI)*temp[0];
-						if(C[row][i] > pairs.top()[0])
-							pairs.push(vector<int>{C[row][i], prevI});
+						if((i - prevI)*prevH > best)
+							best = (i - prevI)*prevH;
 					}
+					if(C[row][i] > pairs.top()[0])
+						pairs.push(vector<int>{C[row][i], prevI});
 				}
 			}
 			while(!pairs.empty()) pairs.pop();
