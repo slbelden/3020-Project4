@@ -20,9 +20,9 @@ int main() {
 	while(1) {
 		string command;
 		cout << "Select an option:" << endl
-			<< "\t R - Use a randomly generated a N x N matrix" << endl
-			<< "\t F - Open a text file containg a matrix of 0s and 1s" << endl
-			<< "\t T - Run pre-defined test cases" << endl
+			<< "\t R - Use a Randomly generated a N x N matrix" << endl
+			<< "\t F - Open a text File containg a matrix of 0s and 1s" << endl
+			<< "\t T - Run pre-defined Test cases" << endl
 			<< "\t H - Help" << endl
 			<< "\t E - Exit" << endl
 			<< "Type a single letter and press enter: ";
@@ -71,8 +71,7 @@ int main() {
 				<< "\tColumns of the matrix are denoted by new lines" << endl
 				<< "\tThere must NOT be a newline character at te end of the file" << endl
 				<< "\tExample file:" << endl
-				<< "\t010\n\t100\n\t110" << endl
-				<< endl;
+				<< "\t010\n\t100\n\t110" << endl;
 		}
 
 		if(command.substr(0, 1) == string("e") || command.substr(0, 1) == string("E")) {

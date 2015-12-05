@@ -8,11 +8,13 @@
 #include <vector>
 #include <fstream>
 #include <random>
+#include <stack>
 #include "Matrix.h"
 using std::cout;
 using std::cin;
 using std::endl;
 using std::vector;
+using std::stack;
 using std::ifstream;
 using std::default_random_engine;
 using std::uniform_int_distribution;
@@ -71,6 +73,45 @@ void Matrix::print() const {
 }
 
 int Matrix::findLargestSubmatrix() const {
-	cout << "Largest Submatrix of Ones has area: N" << endl;
-	return 0;
+	if(data.size() <= 0) {
+		cout << "ERROR: This matrix contains no data" << endl
+			<< "Please create a non-empty matrix first." << endl;
+		return 0;
+	}
+	else {
+		// Initialize histogram matrix
+		// Row one is always equal to the input
+		vector<vector<int>> C{data[0]};
+		for(size_t M = 1; M < data.size(); M++) {
+			vector<int> row;
+			for(size_t N = 0; N < data[M].size(); N++) {
+				// Histogram entries represent the number of contiguous 1s
+				// above and including the current 1. Zeros always = 0.
+				if(data[M][N] == 1) row.push_back(data[M][N] + C[M - 1][N]);
+				else row.push_back(0);
+			}
+			C.push_back(row);
+		}
+
+		// Test Print
+		cout << endl << "Histogram Matrix:" << endl;
+		for each(vector<int> v in C) {
+			for each(int i in v) cout << i;
+			cout << endl;
+		}
+		
+		stack<vector<int>> pairs; // Initialize stack of pairs for tests
+		pairs.push(vector<int>{0, -1}); // Add buffer entry
+		size_t best = 1; // Initialize largest submatrix size
+
+		// Test for largest submartix row-by-row, element-by-element
+		for(size_t row = 0; row < C.size(); row++) {
+			for(size_t i = 0; i < C[row].size(); i++) {
+
+			}
+		}
+
+
+		return 1;
+	}
 }
