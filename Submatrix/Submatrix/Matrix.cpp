@@ -80,8 +80,9 @@ int Matrix::findLargestSubmatrix() const {
 	}
 	else {
 		// Initialize histogram matrix
-		// Row one is always equal to the input
+		// Row one is always equal to the input, with a buffer zero at the end
 		vector<vector<int>> C{data[0]};
+		C[0].push_back(0);
 		for(size_t M = 1; M < data.size(); M++) {
 			vector<int> row;
 			for(size_t N = 0; N < data[M].size(); N++) {
@@ -90,13 +91,8 @@ int Matrix::findLargestSubmatrix() const {
 				if(data[M][N] == 1) row.push_back(data[M][N] + C[M - 1][N]);
 				else row.push_back(0);
 			}
+			row.push_back(0);
 			C.push_back(row);
-		}
-
-		// Test print
-		for each (vector<int> row in C) {
-			for each (int n in row) cout << n;
-			cout << endl;
 		}
 		
 		stack<vector<int>> pairs; // Initialize stack of pairs for tests
@@ -108,7 +104,7 @@ int Matrix::findLargestSubmatrix() const {
 			for(size_t i = 0; i < C[row].size(); i++) {
 				if(C[row][i] > pairs.top()[0])
 					pairs.push(vector<int>{C[row][i], (int)i});
-				else if(C[row][i] == pairs.top()[0]) {}
+				// else if(C[row][i] == pairs.top()[0]) {}
 				else {
 					int prevI;
 					while(C[row][i] < pairs.top()[0]) {
