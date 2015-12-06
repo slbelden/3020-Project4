@@ -35,6 +35,19 @@ Matrix::Matrix(string filename) {
 			}
 			data.push_back(temp);
 		}
+		int rowLength = data[0].size();
+		for each (vector<int> row in data) {
+			if(row.size() != rowLength) {
+				cout << "ERROR: Tried to create a matrix object with invalid dimentions" << endl;
+				exit(1);
+			}
+			for each (int n in row) {
+				if(n != 1 && n != 0) {
+					cout << "ERROR: Tried to create a matrix object from invalid data" << endl;
+					exit(1);
+				}
+			}
+		}
 		printMatrix();
 	}
 	else {
