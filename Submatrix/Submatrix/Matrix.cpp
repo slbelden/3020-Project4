@@ -36,14 +36,45 @@ Matrix::Matrix(string filename) {
 			}
 			data.push_back(temp);
 		}
-		print();
+		printMatrix();
 	}
 	else {
 		cout << "Error: could not open file" << endl;
 	}
 }
 
+Matrix::Matrix(vector<vector<int>> input) {
+	// Input validation
+	int rowLength = input[0].size();
+	for each (vector<int> row in input) {
+		if(row.size() != rowLength) {
+			cout << "ERROR: Tried to create a matrix object with invalid dimentions" << endl;
+			exit(1);
+		}
+		for each (int n in row) {
+			if(n != 1 && n != 0) {
+				cout << "ERROR: Tried to create a matrix object from invalid data" << endl;
+				exit(1);
+			}
+		}
+	}
+	data = input;
+	printMatrix();
+}
+
 void Matrix::randomGenerate(int n) {
+	if(data.size() >= 1) {
+		cout << "ERROR: This matrix already contains data" << endl
+			<< "Please create a new matrix object." << endl;
+	}
+	else {
+		silentRandomGenerate(n);
+		cout << "Generated Matrix:" << endl;
+		printMatrix();
+	}
+}
+
+void Matrix::silentRandomGenerate(int n) {
 	if(data.size() >= 1) {
 		cout << "ERROR: This matrix already contains data" << endl
 			<< "Please create a new matrix object." << endl;
@@ -58,18 +89,21 @@ void Matrix::randomGenerate(int n) {
 			}
 			data.push_back(temp);
 		}
-		cout << "Generated Matrix:" << endl;
-		print();
 	}
 }
 
-void Matrix::print() const {
+void Matrix::printMatrix() const {
 	for each(vector<int> v in data) {
 		for each(int i in v) {
 			cout << i;
 		}
 		cout << endl;
 	}
+}
+
+void Matrix::printAnswer() const {
+	if(LSO < 0) findLargestSubmatrix();
+	cout << "Largest submatrix has size " << LSO << endl;
 }
 
 int Matrix::findLargestSubmatrix() const {
@@ -121,7 +155,7 @@ int Matrix::findLargestSubmatrix() const {
 			while(!pairs.empty()) pairs.pop();
 			pairs.push(vector<int>{0, -1}); // Add buffer entry
 		}
-		cout << "Largest submatrix has size " << best << endl;
+		LSO = best;
 		return best;
 	}
 }
