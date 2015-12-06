@@ -79,9 +79,9 @@ int main() {
 					if(i == 1) M.silentRandomGenerate(n);
 					else if(i == 2) {
 						vector<vector<int>> ones;
-						for(int i = 0; i < n; i++) {
+						for(size_t i = 0; i < n; i++) {
 							vector<int> row;
-							for(int j = 0; j < n; j++) {
+							for(size_t j = 0; j < n; j++) {
 								row.push_back(1);
 							}
 							ones.push_back(row);
@@ -90,9 +90,9 @@ int main() {
 					}
 					else if(i == 3) {
 						vector<vector<int>> zeros;
-						for(int i = 0; i < n; i++) {
+						for(size_t i = 0; i < n; i++) {
 							vector<int> row;
-							for(int j = 0; j < n; j++) {
+							for(size_t j = 0; j < n; j++) {
 								row.push_back(0);
 							}
 							zeros.push_back(row);

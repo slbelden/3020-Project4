@@ -115,18 +115,18 @@ int Matrix::findLargestSubmatrix() const {
 	else {
 		// Initialize histogram matrix
 		// Row one is always equal to the input, with a buffer zero at the end
-		vector<vector<int>> C{data[0]};
-		C[0].push_back(0);
+		vector<vector<int>> histogram{data[0]};
+		histogram[0].push_back(0);
 		for(size_t M = 1; M < data.size(); M++) {
 			vector<int> row;
 			for(size_t N = 0; N < data[M].size(); N++) {
 				// Histogram entries represent the number of contiguous 1s
 				// above and including the current 1. Zeros always = 0.
-				if(data[M][N] == 1) row.push_back(data[M][N] + C[M - 1][N]);
+				if(data[M][N] == 1) row.push_back(data[M][N] + histogram[M - 1][N]);
 				else row.push_back(0);
 			}
 			row.push_back(0);
-			C.push_back(row);
+			histogram.push_back(row);
 		}
 		
 		stack<vector<int>> pairs; // Initialize stack of pairs for tests
@@ -134,22 +134,21 @@ int Matrix::findLargestSubmatrix() const {
 		size_t best = 0; // Initialize largest submatrix size
 
 		// Test for largest submartix row-by-row, element-by-element
-		for(size_t row = 0; row < C.size(); row++) {
-			for(size_t i = 0; i < C[row].size(); i++) {
-				if(C[row][i] > pairs.top()[0])
-					pairs.push(vector<int>{C[row][i], (int)i});
-				// else if(C[row][i] == pairs.top()[0]) {}
+		for(size_t row = 0; row < histogram.size(); row++) {
+			for(size_t i = 0; i < histogram[row].size(); i++) {
+				if(histogram[row][i] > pairs.top()[0])
+					pairs.push(vector<int>{histogram[row][i], (int)i});
 				else {
 					int prevI;
-					while(C[row][i] < pairs.top()[0]) {
+					while(histogram[row][i] < pairs.top()[0]) {
 						prevI = pairs.top()[1];
 						int prevH = pairs.top()[0];
 						pairs.pop();
 						if((i - prevI)*prevH > best)
 							best = (i - prevI)*prevH;
 					}
-					if(C[row][i] > pairs.top()[0])
-						pairs.push(vector<int>{C[row][i], prevI});
+					if(histogram[row][i] > pairs.top()[0])
+						pairs.push(vector<int>{histogram[row][i], prevI});
 				}
 			}
 			while(!pairs.empty()) pairs.pop();
