@@ -44,7 +44,7 @@ int main() {
 			cout << "Enter a filename: ";
 			getline(cin, filename);
 			Matrix M = Matrix(filename);
-			M.findLargestSubmatrix();
+			M.printAnswer();
 		}
 
 		if(command.substr(0, 1) == string("t") || command.substr(0, 1) == string("T")) {
@@ -110,8 +110,8 @@ int main() {
 
 		if(command.substr(0, 1) == string("h") || command.substr(0, 1) == string("H")) {
 			cout << endl;
-			for(int i = 0; i < 80; i++) cout << "/";
-			cout << "This program finds the largest submartix of ones in a M x N matrix." << endl
+			for(int i = 0; i < 79; i++) cout << "/";
+			cout << endl << "This program finds the largest submartix of ones in a M x N matrix." << endl
 				<< "\tThe input and output matrices can be square or rectangular." << endl
 				<< "\tThe algorithm to find a largest submatrix of ones runs in O(M*N)" << endl
 				<< "\tThis program does NOT report the location of the matrix it finds." << endl
@@ -122,9 +122,8 @@ int main() {
 				<< "\tColumns of the matrix are denoted by new lines" << endl
 				<< "\tThere must NOT be a newline character at the end of the file" << endl
 				<< "\tExample:" << endl
-				<< "\t010\n\t100\n\t110" << endl
-				<< endl;
-			for(int i = 0; i < 80; i++) cout << "/";
+				<< "\t010\n\t100\n\t110" << endl;
+			for(int i = 0; i < 79; i++) cout << "/";
 		}
 
 		if(command.substr(0, 1) == string("e") || command.substr(0, 1) == string("E")) {

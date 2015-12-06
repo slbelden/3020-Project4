@@ -18,6 +18,7 @@ int n;
 void test(vector<vector<int>> input, int expected) {
 	cout << "Case " << n << ":" << endl;
 	Matrix matrix = Matrix(input);
+	matrix.printMatrix();
 	cout << endl << "Expected result: " << expected << endl;
 	matrix.printAnswer();
 	cout << endl << endl;

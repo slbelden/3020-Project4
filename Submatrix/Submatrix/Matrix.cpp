@@ -101,7 +101,7 @@ void Matrix::printMatrix() const {
 
 void Matrix::printAnswer() const {
 	if(LSO < 0) findLargestSubmatrix();
-	cout << "Largest submatrix has size " << LSO << endl;
+	if(LSO >= 0) cout << "Largest submatrix has size " << LSO << endl;
 }
 
 int Matrix::findLargestSubmatrix() const {
