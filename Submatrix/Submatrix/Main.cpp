@@ -1,8 +1,7 @@
 // Stephen Belden
 // Meghan Haukaas
-// Chris Ruiz?
 
-// 2015-Nov-19
+// 2015-Dec-06
 
 #include <iostream>
 #include <string>
@@ -121,7 +120,7 @@ int main() {
 			cout << "This program can accept .txt files as input (option F)" << endl
 				<< "\tRows of the matrix must be given without spaces" << endl
 				<< "\tColumns of the matrix are denoted by new lines" << endl
-				<< "\tThere must NOT be a newline character at te end of the file" << endl
+				<< "\tThere must NOT be a newline character at the end of the file" << endl
 				<< "\tExample:" << endl
 				<< "\t010\n\t100\n\t110" << endl
 				<< endl;

@@ -1,8 +1,7 @@
 // Stephen Belden
 // Meghan Haukaas
-// Chris Ruiz?
 
-// 2015-Nov-19
+// 2015-Dec-06
 
 #pragma once
 
