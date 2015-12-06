@@ -54,10 +54,10 @@ int main() {
 		}
 
 		if(command.substr(0, 1) == string("c") || command.substr(0, 1) == string("C")) {
+			cout << "This code will run until one problem takes more than 30 seconds..."
+				<< endl << endl;
 			for(int i = 1; i <= 3; i++) {
-				cout << "This code will run until one problem takes more than 30 seconds..."
-					<< endl << endl;
-				cout << "Finding the largest submatrix of ones with ";
+				cout << endl << "Finding the largest submatrix of ones with ";
 				switch(i) {
 				case 1:
 					cout << "random input : " << endl;
@@ -74,7 +74,7 @@ int main() {
 				do {
 					Timer time;
 					Matrix M;
-					cout << "\tRunning with an input size of " << n
+					cout << "\tRunning with an input size of " << n << "x" << n
 						<< ((n <= 9) ? " \t" : "\t") << "took ";
 					if(i == 1) M.silentRandomGenerate(n);
 					else if(i == 2) {

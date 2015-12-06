@@ -59,7 +59,6 @@ Matrix::Matrix(vector<vector<int>> input) {
 		}
 	}
 	data = input;
-	printMatrix();
 }
 
 void Matrix::randomGenerate(int n) {
