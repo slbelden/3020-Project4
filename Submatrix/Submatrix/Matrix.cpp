@@ -35,6 +35,7 @@ Matrix::Matrix(string filename) {
 			}
 			data.push_back(temp);
 		}
+		// Input Validation
 		int rowLength = data[0].size();
 		for each (vector<int> row in data) {
 			if(row.size() != rowLength) {
